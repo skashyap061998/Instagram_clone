@@ -7,16 +7,18 @@ const connection = require("./db")
 const jwt = require("jsonwebtoken")
 const UserModel = require('./models/auth.model')
 const postRoute = require('./routes/postROute')
+const commentRoute = require('./routes/comment')
 
 app.use(express.json())
 
 app.get("/",(req,res)=>{
-    
+
     res.send("hello")
 })
 
 app.use("/user",auth)
 app.use("/post",postRoute)
+app.use("/comment",commentRoute)
 
 
     app.listen(port, async()=>{

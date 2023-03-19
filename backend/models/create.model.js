@@ -1,8 +1,11 @@
 const {model,Schema} = require("mongoose")
 
 const createSchema = new Schema({
-    userId:{type:String,require:true},
+    author:{type:String,require:true},
     imgUrl:{type:String,require:true},
+    tittle:{type:String}
+},{
+    timestamps:true
 })
 
 const createModel = model("userpost",createSchema)

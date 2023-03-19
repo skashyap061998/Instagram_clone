@@ -2,15 +2,19 @@ const UserModel = require("../models/auth.model");
 const createModel = require("../models/create.model");
 
 const postController = async(req,res,next) =>{
-    const {userId,imgUrl} = req.body ;
-    console.log(userId,imgUrl)
-   
-    if(!userId || !imgUrl) return res.status(400).json({message:"fields are missing"})
+    const {author,imgUrl,tittle} = req.body ;
+    
+  try{
+     
+    if(!author || !imgUrl) return res.status(400).json({message:"fields are missing",status:false})
     let postData = new createModel({
-        userId,imgUrl
+        author,imgUrl,tittle
     })
     await postData.save()
-    res.send('sucess')
+    res.status(201).json({message:"post Saved Suessfully",status:true})
+  }catch(err){
+    res.status(400).json({message:"something went wrong",status:false})
+  }
 }
 
 
