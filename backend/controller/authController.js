@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const signupAuth = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name,username, email, password } = req.body;
   try {
     let user = await UserModel.findOne({ email });
     if (user) {
@@ -13,6 +13,7 @@ const signupAuth = async (req, res) => {
     // console.log(name,email,password)
     user = await new UserModel({
       name,
+      username,
       email,
       password,
     });
@@ -20,9 +21,11 @@ const signupAuth = async (req, res) => {
     user.password = bcrypt.hashSync(user.password, salt);
     const newUser = await user.save();
     if (newUser) {
-      return res.status(201).send({ message: "signup suseccfull" });
+      return res.status(201).send({ message: "signup suseccfull",status:true });
     } else {
-      return res.status(201).send({ message: "signup fail enter valid credentials" });
+      return res
+        .status(201)
+        .send({ message: "signup fail enter valid credentials" });
     }
   } catch (error) {
     return res.status(400).send({ message: "signup fail" });
@@ -30,11 +33,12 @@ const signupAuth = async (req, res) => {
 };
 
 const loginAuth = async (req, res) => {
-  const { email, password } = req.body;
+  const { x, password } = req.body;
 
   const user = await UserModel.findOne({
-    email,
+    $or: [{ username: x }, { email: x }],
   });
+  // console.log(user)
   if (!user) {
     return res.status(400).send("enter valid credentials");
   }
@@ -44,7 +48,7 @@ const loginAuth = async (req, res) => {
   if (!Passcheck) {
     return res.status(400).send("enter valid credentials");
   }
-  console.log(user._id);
+  // console.log(user._id);
   const token = jwt.sign(
     {
       id: user._id,

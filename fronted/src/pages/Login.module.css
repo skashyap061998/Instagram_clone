@@ -1,0 +1,57 @@
+.LoginContainer{
+    border:0.5px solid lightgrey;
+    /* height:110vh; */
+    width:27%;
+    margin: auto;
+    margin-top: 1%;
+    
+}
+
+
+.LoginContainer>img{
+    height: 5.6rem;
+    margin-top: 4%;
+}
+
+
+
+.LoginFormContainer>form>div>input{
+    height: 5.5vh;
+    width:18vw;
+    margin-top: 2%;
+    background-color: #fafafa;
+    border:0.5px solid lightgrey;
+    padding-left: 2%;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    font-weight: 300;
+    color:lightgrey
+}
+.LoginFormContainer>form>p{
+    font-size: 0.75rem;
+    color:rgb(172, 170, 170);
+    margin: 10%;
+}
+
+.LoginFormContainer>form>button{
+    
+    background-color: #0095f6;
+    height:5.5vh;
+    width:19vw;
+    color:white;
+    font-size: 0.9rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border:none;
+    border-radius: 10px;
+    font-weight:500;
+    margin-top: 4%;
+}
+
+.LoginLoginButtonContainer{
+    border:0.5px solid lightgrey;
+   
+    width:26%;
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 2%;
+}

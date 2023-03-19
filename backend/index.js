@@ -8,7 +8,10 @@ const jwt = require("jsonwebtoken")
 const UserModel = require('./models/auth.model')
 const postRoute = require('./routes/postROute')
 const commentRoute = require('./routes/comment')
+const cors = require('cors')
 
+ 
+app.use(cors())
 app.use(express.json())
 
 app.get("/",(req,res)=>{

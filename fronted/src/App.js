@@ -1,6 +1,6 @@
 
 import './App.css';
-import Routes from './Routes/Routes';
+import AllRoutes from './Routes/AllRoutes';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
      
-    <Routes/>
+    <AllRoutes/>
 
     </div>
   );

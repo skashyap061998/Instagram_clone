@@ -1,19 +1,19 @@
 import React from 'react'
-import { Route, Router } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 
-const Routes = () => {
+const AllRoutes = () => {
   return (
     <div>
-<Router>
+<Routes>
     <Route path="/signup" element={<Signup/>}/>
     <Route path="/login" element={<Login/>}/>
 
-</Router>
+</Routes>
 
     </div>
   )
 }
 
-export default Routes
+export default AllRoutes
