@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styles from './Signup.module.css';
 import {AiOutlineFacebook} from "react-icons/ai"
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux"
+import { SignupFunction } from '../redux/action';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -11,7 +13,9 @@ function Signup() {
     password: ''
   });
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
+  const Signup_Status = useSelector((store)=>store.Store_Status)
+  console.log(Signup_Status,"sttus")
   function handleChange(e) {
     setFormData({
       ...formData,
@@ -21,28 +25,7 @@ function Signup() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-
-    try {
-      const response = await fetch('http://localhost:8080/user/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      const data = await response.json();
-      
-      if (data.status) {
-        navigate("/login")
-      } else {
-        alert(data.error);
-      }
-    } catch (error) {
-      console.error(error);
-      alert('Server error');
-    }
+    dispatch(SignupFunction(formData,navigate))
   }
 
   return (

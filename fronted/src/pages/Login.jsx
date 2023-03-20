@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
 import {AiOutlineFacebook} from "react-icons/ai"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'
+import {useDispatch, useSelector} from "react-redux"
+import { LoginFunction } from '../redux/action';
 
 function Login() {
+
+  const token = useSelector((store)=>store.token)
+  // const location = useLocation()
+
+
+  // console.log(token)
+
+
+
   const [formData, setFormData] = useState({
     x: '',   
     password: ''
   });
   
-
+const dispatch = useDispatch()
+const navigate = useNavigate()
   function handleChange(e) {
     setFormData({
       ...formData,
@@ -19,27 +31,8 @@ function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-
-    try {
-      const response = await fetch('http://localhost:8080/user/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      const data = await response.json();
-      console.log(data)
-      // if (response.ok) {
-      // } else {
-      //   alert(data.error);
-      // }
-    } catch (error) {
-      console.error(error);
-      alert('Server error');
-    }
+    dispatch(LoginFunction(formData,navigate))
+    
   }
 
   return (

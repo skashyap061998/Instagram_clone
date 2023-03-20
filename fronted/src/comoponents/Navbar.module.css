@@ -1,0 +1,90 @@
+.HomeContainer{
+    border-right: 0.5px solid grey;
+    width:18%;
+    /* border:1px solid grey */
+    height:100vmin
+}
+.HomeContainer>img{
+    height:10vh;
+    margin-top: 10%;
+    margin-left: -5vw;
+}
+.HomeLogos{
+    margin-top: 8.5%;
+}
+.HomeLogo{
+    height:4vh;
+    width: 5vw;
+    margin-top: 2%;
+    /* margin-left: -25%; */
+    /* margin-right: -; */
+    /* border:1px solid red */
+}
+
+.HomeLogos>div>div>a{
+    text-decoration: none;
+    color:black;
+    font-weight: 700;
+    align-items: center;
+    font-size: 1.2rem;
+}
+.HomeLogoDiv{
+    display: flex;
+}
+
+.SearchLogoDiv{
+    display: flex;
+    margin-top: 10%;
+}
+.SearchLogo{
+    width:5vw;
+    height:4vh
+}
+.ExploreLogoDiv{
+    display: flex;
+    margin-top: 10%;
+
+}
+.ExploreLogo{
+    width:5vw;
+    height:4vh
+}
+.ReelsLogoDiv{
+    display: flex;
+    margin-top: 10%;
+}
+.ReelsLogo{
+    width:5vw;
+    height:4vh
+}
+.MessagesLogoDiv{
+    display: flex;
+    margin-top: 10%;
+}
+.MessagesLogo{
+    width:5vw;
+    height:4vh
+}
+.NotificationLogoDiv{
+    display: flex;
+    margin-top: 10%;
+}
+.NotificationLogo{
+    width:5vw;
+    height:4vh
+}
+.MoreLogoDiv{
+    display: flex;
+    margin-top: 19%;
+}
+.MoreLogo{
+    width:5vw;
+    height:4vh
+}
+.Morediv>a{
+    text-decoration: none;
+    color:black;
+    font-weight: 700;
+    align-items: center;
+    font-size: 1.2rem;
+}

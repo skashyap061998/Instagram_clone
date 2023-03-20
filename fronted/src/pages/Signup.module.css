@@ -41,7 +41,7 @@
     border-radius: 5px;
     font-size: 0.7rem;
     font-weight: 300;
-    color:lightgrey
+    /* color:lightgrey */
 }
 .signupFormContainer>form>p{
     font-size: 0.75rem;

@@ -10,3 +10,6 @@ export const store = legacy_createStore(
     reducer,
     composeEnhancer(applyMiddleware(thunk))
     )
+
+
+    // console.log()

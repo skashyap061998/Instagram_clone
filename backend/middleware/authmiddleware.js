@@ -8,7 +8,7 @@ const authMiddleware = async (req,res,next)=>{
       return res.status(400).json({ message: "invalid user" });
     }
    req.body.author =  verifyToken.id
-   console.log(req.body.author)
+  //  console.log(req.body.author)
    next()
   } catch (error) {
     res.send(error,"err")

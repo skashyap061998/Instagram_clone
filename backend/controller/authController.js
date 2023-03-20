@@ -8,7 +8,7 @@ const signupAuth = async (req, res) => {
   try {
     let user = await UserModel.findOne({ email });
     if (user) {
-      return res.status(400).send({ message: "Email is already in use" });
+      return res.status(400).send({ message: "Email is already in use" ,status:false});
     }
     // console.log(name,email,password)
     user = await new UserModel({
@@ -24,29 +24,30 @@ const signupAuth = async (req, res) => {
       return res.status(201).send({ message: "signup suseccfull",status:true });
     } else {
       return res
-        .status(201)
-        .send({ message: "signup fail enter valid credentials" });
+        .status(400)
+        .send({ message: "signup fail enter valid credentials",status:false});
     }
   } catch (error) {
-    return res.status(400).send({ message: "signup fail" });
+    return res.status(400).send({ message: "signup fail",status:false ,error:error});
   }
 };
 
 const loginAuth = async (req, res) => {
   const { x, password } = req.body;
+  // console.log(x,password)
 
   const user = await UserModel.findOne({
     $or: [{ username: x }, { email: x }],
   });
-  // console.log(user)
+  console.log(user)
   if (!user) {
-    return res.status(400).send("enter valid credentials");
+    return res.status(400).send({message:"enter valid credentials",status:false});
   }
 
   const Passcheck = await bcrypt.compare(password, user.password);
 
   if (!Passcheck) {
-    return res.status(400).send("enter valid credentials");
+    return res.status(400).send({message:"enter valid credentials",status:false});
   }
   // console.log(user._id);
   const token = jwt.sign(
@@ -55,6 +56,6 @@ const loginAuth = async (req, res) => {
     },
     process.env.SIGN
   );
-  return res.status(201).send({ message: "signup suseccfull", token: token });
+  return res.status(201).send({ message: "Login suseccfull", token: token ,status:true,user:user});
 };
 module.exports = { signupAuth, loginAuth };

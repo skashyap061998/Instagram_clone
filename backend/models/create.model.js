@@ -3,7 +3,8 @@ const {model,Schema} = require("mongoose")
 const createSchema = new Schema({
     author:{type:String,require:true},
     imgUrl:{type:String,require:true},
-    tittle:{type:String}
+    tittle:{type:String},
+    like:{type:Number, default:0}
 },{
     timestamps:true
 })
