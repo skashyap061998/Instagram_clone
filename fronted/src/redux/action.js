@@ -20,7 +20,7 @@ const add_token = (payload)=>{
 export const SignupFunction =(payload,navigate) =>async(dispatch)=>{
     // const dispatch = useDispatch()
 console.log(payload,"paylod")
-    const response = await fetch('http://localhost:8080/user/signup', {
+    const response = await fetch('https://vast-tan-bat-wig.cyclic.app/user/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -40,10 +40,8 @@ console.log(payload,"paylod")
 
 
 export const LoginFunction =(payload,navigate) =>async(dispatch)=>{
-    // const dispatch = useDispatch()
-//     console.log("hello")
-// console.log(payload,"paylod")
-    const response = await fetch('http://localhost:8080/user/login', {
+    
+    const response = await fetch('https://vast-tan-bat-wig.cyclic.app/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -56,7 +54,7 @@ export const LoginFunction =(payload,navigate) =>async(dispatch)=>{
       if (data.status) { 
         dispatch(add_token(data.token))
         alert(data.message)
-        navigate("/")
+        navigate("-1")
       } else {
         alert(data.message);
       }
